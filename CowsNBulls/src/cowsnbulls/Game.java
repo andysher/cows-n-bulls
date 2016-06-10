@@ -5,6 +5,8 @@
  */
 package cowsnbulls;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Andy
@@ -21,10 +23,12 @@ public class Game {
     public void start()
     {
         //game logic
+        
         System.out.println("\nWelcome and good luck " + player.getName().toUpperCase() + "....!!");
         //use rounds to play
         this.rounds.nextRound();
-        this.rounds.checkNumber(new GmNumber(1,2,3));
+        System.out.print("Enter your Guess: "); 
+        this.rounds.checkNumber(this.player.guessNumber());
         System.out.println(this.rounds.displayResult());
     }
     

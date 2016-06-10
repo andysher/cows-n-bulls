@@ -28,10 +28,11 @@ public class Round {
             //randomly genarate new number
             int newNum = this.generatorObj.getGeneratedNum();
             //filter with game specification
-            if(this.filterObj.isValid(this.separateDigits(newNum))
+            if(this.filterObj.isValid(this.separateDigits(newNum)))
             {
                 this.roundNum = this.filterObj.getGenNum(); 
-                System.out.println("\nNew number has been set: " + this.roundNum);
+                //System.out.println("\nNew number has been set: " + this.roundNum);
+                System.out.println("\nNew number has been set: ***");
                 break;
             }
             
@@ -69,7 +70,7 @@ public class Round {
             this.cows++;
     }
     
-    private GmNumber separateDigits(int num)
+    public static GmNumber separateDigits(int num)
     {
         int d3 = num%10;
         num = num/10;
