@@ -17,14 +17,14 @@ public class Round {
     private final Generator genObj = new Generator();
     private final GameFilter filterObj = new GameFilter();
     
-    public int newRound(){
+    public GmNumber newRound(){
         while(true)
         {
             //randomly genarate new number
             newNum = genObj.getGeneratedNum();
             //filter with game specification
             if(filterObj.isValid(newNum))
-                return newNum;     
+                return filterObj.getGn();     
         }
     }
 }

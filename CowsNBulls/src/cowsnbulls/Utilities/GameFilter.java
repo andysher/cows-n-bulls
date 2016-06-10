@@ -5,14 +5,14 @@
  */
 package cowsnbulls.Utilities;
 
+import cowsnbulls.GmNumber;
+
 /**
  *
  * @author Andy
  */
 public class GameFilter{
-    private int d1;
-    private int d2;
-    private int d3;
+    private GmNumber gn;
     
     public boolean isValid(int num)
     {
@@ -24,24 +24,29 @@ public class GameFilter{
     
     private boolean digitRepeated()
     {
-        if(d1==d2 || d2==d3 || d3==d1)
+        if(gn.getD1()==gn.getD2() || gn.getD2()==gn.getD3() || gn.getD3()==gn.getD1())
             return true;
         return false;
     }
     
     private boolean zeroOccured()
     {
-        if(d1==0 || d2==0 || d3==0)
+        if(gn.getD1()==0 || gn.getD2()==0 || gn.getD3()==0)
             return true;
         return false;
     }
     
     private void separateDigits(int num)
     {
-        d3 = num%10;
+        int d3 = num%10;
         num = num/10;
-        d2 = num%10;
+        int d2 = num%10;
         num = num/10;
-        d1 = num%10;
+        int d1 = num%10;
+        gn = new GmNumber(d1,d2,d3);
+    }
+
+    public GmNumber getGn() {
+        return gn;
     }
 }
