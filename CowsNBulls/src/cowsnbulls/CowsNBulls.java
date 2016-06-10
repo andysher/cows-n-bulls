@@ -5,6 +5,8 @@
  */
 package cowsnbulls;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Andy
@@ -16,8 +18,13 @@ public class CowsNBulls {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("\n\t******Cows & Bulls******\n\n");
-        
+        Scanner input = new Scanner(System.in);
+        System.out.println("\n\t******Cows & Bulls******\n");
+        System.out.print("Enter player name: ");
+        Player plyr = new Player(input.next());
+        Game cnb = new Game(plyr);
+        cnb.start();
+        cnb.end();
     }
     
 }

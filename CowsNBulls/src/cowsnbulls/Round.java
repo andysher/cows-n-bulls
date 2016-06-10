@@ -12,10 +12,10 @@ import cowsnbulls.Utilities.Generator;
  *
  * @author Andy
  */
-public class CreateNumber {
+public class Round {
     private int newNum;
-    private Generator genObj = new Generator();
-    private GameFilter filterObj = new GameFilter();
+    private final Generator genObj = new Generator();
+    private final GameFilter filterObj = new GameFilter();
     
     public int newRound(){
         while(true)
