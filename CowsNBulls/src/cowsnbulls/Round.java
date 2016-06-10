@@ -13,11 +13,11 @@ import cowsnbulls.Utilities.Generator;
  * @author Andy
  */
 public class Round {
-    private GmNumber numObj;
+    private GmNumber roundNum;
 //    private String rsRound;
     private int cows;
     private int bulls;
-    private final Generator genObj = new Generator();
+    private final Generator generatorObj = new Generator();
     private final GameFilter filterObj = new GameFilter();
     
     public void nextRound(){
@@ -26,10 +26,15 @@ public class Round {
         while(true)
         {
             //randomly genarate new number
-            int newNum = this.genObj.getGeneratedNum();
+            int newNum = this.generatorObj.getGeneratedNum();
             //filter with game specification
-            if(this.filterObj.isValid(newNum))
-                this.numObj = this.filterObj.getGn();     
+            if(this.filterObj.isValid(this.separateDigits(newNum))
+            {
+                this.roundNum = this.filterObj.getGenNum(); 
+                System.out.println("\nNew number has been set: " + this.roundNum);
+                break;
+            }
+            
         }
     }
     
@@ -46,21 +51,31 @@ public class Round {
     
     private void checkNumberForBulls(int d1, int d2, int d3)
     {
-        if(d1 == this.numObj.getD1())
+        if(d1 == this.roundNum.getD1())
             this.bulls++;
-        if(d2 == this.numObj.getD2())
+        if(d2 == this.roundNum.getD2())
             this.bulls++;
-        if(d3 == this.numObj.getD3())
+        if(d3 == this.roundNum.getD3())
             this.bulls++;
     }
     
     private void checkNumberForCows(int d1, int d2, int d3)
     {
-        if(d1 == this.numObj.getD2() || d1 == this.numObj.getD3())
+        if(d1 == this.roundNum.getD2() || d1 == this.roundNum.getD3())
             this.cows++;
-        if(d2 == this.numObj.getD1() || d2 == this.numObj.getD3())
+        if(d2 == this.roundNum.getD1() || d2 == this.roundNum.getD3())
             this.cows++;
-        if(d3 == this.numObj.getD2() || d3 == this.numObj.getD1())
+        if(d3 == this.roundNum.getD2() || d3 == this.roundNum.getD1())
             this.cows++;
+    }
+    
+    private GmNumber separateDigits(int num)
+    {
+        int d3 = num%10;
+        num = num/10;
+        int d2 = num%10;
+        num = num/10;
+        int d1 = num%10;
+        return new GmNumber(d1,d2,d3);
     }
 }

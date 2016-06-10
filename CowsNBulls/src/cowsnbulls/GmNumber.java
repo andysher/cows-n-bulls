@@ -31,5 +31,10 @@ public class GmNumber {
     public int getD3() {
         return d3;
     }
+
+    @Override
+    public String toString() {
+        return "{" + d1 + d2 + d3 + "}";
+    }
     
 }

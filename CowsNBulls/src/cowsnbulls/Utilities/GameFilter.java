@@ -12,11 +12,12 @@ import cowsnbulls.GmNumber;
  * @author Andy
  */
 public class GameFilter{
-    private GmNumber gn;
+    private GmNumber genNum;
     
-    public boolean isValid(int num)
+    public boolean isValid(GmNumber genNum)
     {
-        separateDigits(num);
+//        separateDigits(num);
+        this.genNum = genNum;
         if(!digitRepeated() && !zeroOccured())
             return true;
         return false;
@@ -24,29 +25,19 @@ public class GameFilter{
     
     private boolean digitRepeated()
     {
-        if(gn.getD1()==gn.getD2() || gn.getD2()==gn.getD3() || gn.getD3()==gn.getD1())
+        if(genNum.getD1()==genNum.getD2() || genNum.getD2()==genNum.getD3() || genNum.getD3()==genNum.getD1())
             return true;
         return false;
     }
     
     private boolean zeroOccured()
     {
-        if(gn.getD1()==0 || gn.getD2()==0 || gn.getD3()==0)
+        if(genNum.getD1()==0 || genNum.getD2()==0 || genNum.getD3()==0)
             return true;
         return false;
     }
-    
-    private void separateDigits(int num)
-    {
-        int d3 = num%10;
-        num = num/10;
-        int d2 = num%10;
-        num = num/10;
-        int d1 = num%10;
-        gn = new GmNumber(d1,d2,d3);
-    }
 
-    public GmNumber getGn() {
-        return gn;
+    public GmNumber getGenNum() {
+        return genNum;
     }
 }
