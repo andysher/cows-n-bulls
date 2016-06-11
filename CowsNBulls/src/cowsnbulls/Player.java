@@ -32,5 +32,10 @@ public class Player {
         pNumList.add(obj);
         return obj;
     }
+    
+    public int getTotalTurns()
+    {
+        return this.pNumList.size();
+    }
 
 }
