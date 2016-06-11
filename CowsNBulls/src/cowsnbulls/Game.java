@@ -25,7 +25,6 @@ public class Game {
         //use rounds to play
         this.rounds.nextRound();
         while (!this.rounds.isRoundWon()) {
-            System.out.print("Enter your Guess: ");
             this.rounds.checkNumber(this.player.guessNumber());
             System.out.println(this.rounds.displayResult());
         }
